@@ -11,6 +11,7 @@ eadrc_uchyb_sprezyna = out.eadrc_sprezyna_uchyb;
 %% PLOTOWANIE DANYCH ePID
 figure
 subplot(2,1,1)
+title("PID");
 hold on
 plot(epid_zadana_sprezyna,'-')
 hold on
@@ -40,6 +41,7 @@ ax.YAxis.FontSize = 12;  % Wartości osi Y
 %% PLOTOWANIE DANYCH eADRC
 figure
 subplot(2,1,1)
+title("ADRC");
 hold on
 plot(eadrc_zadana_sprezyna,'-')
 hold on
@@ -76,6 +78,19 @@ xlabel('Czas [s]','FontSize',14)
 ylabel('Pozycja [m]','FontSize',14)
 legend('Wartość uchybu - eADRC','Wartość uchybu - ePID','FontSize',14)
 title(' ')
+ax = gca;
+ax.FontSize = 12;
+ax.YLabel.FontSize = 12; % Etykieta osi Y
+ax.YAxis.FontSize = 12;  % Wartości osi Y
+
+%% ROZNICA UCHYBOW
+roznica_e = eadrc_uchyb_sprezyna-epid_uchyb_sprezyna;
+figure
+plot(roznica_e.Time,abs(roznica_e.Data));
+grid on;
+xlabel('Czas [s]','FontSize',14)
+ylabel('Pozycja [m]','FontSize',14)
+title("Wartość bezwzględna różnicy między uchybami")
 ax = gca;
 ax.FontSize = 12;
 ax.YLabel.FontSize = 12; % Etykieta osi Y
